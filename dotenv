@@ -1,0 +1,13 @@
+# database.yml
+export DATABASE=
+export DATABASE_USERNAME=
+export DATABASE_PASSWORD=
+
+# SSO
+export DBC_SHARED_SECRET=
+export DEVBOOTCAMP_SSO_URL=
+
+# Backoffice
+export BO_KEY=
+export BO_SECRET=
+export BACKOFFICE_API_URL=
