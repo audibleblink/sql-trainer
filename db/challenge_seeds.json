@@ -1,0 +1,212 @@
+{
+  "fields": [
+    "query",
+    "instructions"
+  ],
+  "values": [
+    [
+      "SELECT * FROM invoices;",
+      "Give me a list of all invoices"
+    ],
+    [
+      "SELECT * FROM artists;",
+      "Give me a list of all artists"
+    ],
+    [
+      "SELECT name FROM artists;",
+      "Give me the name of every artist"
+    ],
+    [
+      "SELECT first_name, last_name FROM employees;",
+      "Give me the first and last names of every employee"
+    ],
+    [
+      "SELECT name FROM media_types;",
+      "Give me the names of every media type"
+    ],
+    [
+      "SELECT * FROM employees ORDER BY hire_date DESC;",
+      "Give me a list of every employee by hire date in descending order"
+    ],
+    [
+      "SELECT hire_date, first_name, last_name FROM employees WHERE hire_date \u003c '2011-02-15';",
+      "Give me the hire date, first name, and last name of all employees hired before February 15, 2011"
+    ],
+    [
+      "SELECT * FROM employees WHERE last_name LIKE 'A%';",
+      "Give me a list of all employees whose name begins with \"A\""
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'WA' AND billing_city = 'Redmond';",
+      "Give me a list of all invoices from Redmond, WA"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Germany' AND billing_city = 'Berlin';",
+      "Give me a list of all invoices from Berlin, Germany"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Canada';",
+      "Give me a list of all invoices from Canada"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Canada' AND billing_state = 'AB';",
+      "Give me a list of all invoices from Alberta (AB), Canada"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Canada' AND billing_state = 'AB' AND billing_city = 'Edmonton';",
+      "Give me a list of all invoices from Edmonton, Alberta (AB), Canada"
+    ],
+    [
+      "SELECT billing_address FROM invoices WHERE billing_state = 'WA' AND billing_city = 'Redmond';",
+      "Give me the billing addresses from every invoice from Redmond, WA"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'NV' AND billing_city = 'Reno' AND total \u003e 5;",
+      "Give me a list of all invoices for more than $5.00 from Reno, NV"
+    ],
+    [
+      "SELECT * FROM tracks WHERE composer IS NULL;",
+      "Give me a list of every track without a composer"
+    ],
+    [
+      "SELECT * FROM customers WHERE company IS NULL;",
+      "Give me a list of every customer not associated with a company"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'WA' AND billing_city = 'Redmond' ORDER BY total ASC;",
+      "Give me a list of all invoices from Redmond, WA sorted from low-to-high by total"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'WA' AND billing_city = 'Redmond' ORDER BY total DESC;",
+      "Give me a list of all invoices from Redmond, WA sorted from high-to-low by total"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Germany' ORDER BY total DESC;",
+      "Give me a list of all invoices from Germany sorted from high-to-low by total"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_country = 'Germany' ORDER BY total DESC LIMIT 10;",
+      "Give me a list of the 10 most expensive invoices from Germany"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'MA' AND billing_city = 'Boston' ORDER BY total DESC LIMIT 10;",
+      "Give me a list of the 10 most expensive invoices from Boston, MA"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'MA' AND billing_city = 'Boston' ORDER BY total ASC LIMIT 10;",
+      "Give me a list of the 10 least expensive invoices from Boston, MA"
+    ],
+    [
+      "SELECT billing_address FROM invoices WHERE billing_state = 'CA' AND billing_city = 'Cupertino' ORDER BY total DESC LIMIT 3;",
+      "Give me the street addresses of the 3 most expensive invoices from Cupertino, CA"
+    ],
+    [
+      "SELECT * FROM invoices WHERE billing_state = 'CA' AND (billing_city = 'Mountain View' OR billing_city = 'Cupertino');",
+      "Give me a list of all invoices from either Cupertino, CA or Mountain View, CA"
+    ],
+    [
+      "SELECT count(*) FROM invoices WHERE billing_city = 'Santiago';",
+      "Find the number of invoices sent to the city of \"Santiago\""
+    ],
+    [
+      "SELECT country, COUNT(*) FROM customers GROUP BY country;",
+      "Give me a count of the number of customers by country"
+    ],
+    [
+      "SELECT unit_price, COUNT(*) FROM tracks GROUP BY unit_price;",
+      "Give me a count of the number of tracks by unit price"
+    ],
+    [
+      "SELECT name FROM artists WHERE name LIKE '%smith%';",
+      "Give me a list of all names of artists whose name contains \"smith\"."
+    ],
+    [
+      "SELECT name FROM artists WHERE name LIKE '%smith';",
+      "Give me a list of names of artists whose name ends with \"smith\"."
+    ],
+    [
+      "SELECT city, COUNT(*) FROM employees GROUP BY city;",
+      "Give me a count of the number of employees by city"
+    ],
+    [
+      "SELECT country, COUNT(*) FROM customers GROUP BY country ORDER BY COUNT(*) DESC LIMIT 3",
+      "Give me a list of the top 3 countries by number of customers in descending order"
+    ],
+    [
+      "SELECT billing_city, COUNT(*) FROM invoices GROUP BY billing_city ORDER BY COUNT(*) DESC LIMIT 5",
+      "Give me a list of the top 5 cities by number of invoices in descending order"
+    ],
+    [
+      "SELECT ar.name, al.title FROM artists AS ar JOIN albums AS al ON al.artist_id = ar.id;",
+      "List all artist names alongside the titles of their albums"
+    ],
+    [
+      "SELECT tr.name, al.title FROM albums AS al JOIN tracks AS tr ON tr.album_id = al.id;",
+      "List all album names along with their track titles"
+    ],
+    [
+      "SELECT ar.name, al.title FROM artists AS ar JOIN albums AS al ON al.artist_id = ar.id ORDER BY ar.name;",
+      "List all artist names alongside the titles of their albums, in alphabetical order by artist name"
+    ],
+    [
+      "SELECT cs.first_name, cs.last_name, inv.total FROM customers AS cs JOIN invoices AS inv ON cs.id = inv.customer_id ORDER BY inv.total DESC;",
+      "List all customers' first and last names next to the totals on their invoices, ordered by total, high to low"
+    ],
+    [
+      "SELECT * FROM customers AS cs JOIN invoices AS inv ON cs.id = inv.customer_id ORDER BY inv.total DESC LIMIT 1;",
+      "Give me the customer (and their invoice) with the highest invoice total"
+    ],
+    [
+      "SELECT * FROM albums AS al JOIN artists AS ar ON ar.id = al.artist_id WHERE ar.name = 'Aerosmith';",
+      "Give me a list of every Aerosmith album"
+    ],
+    [
+      "SELECT * FROM albums AS al JOIN artists AS ar ON ar.id = al.artist_id WHERE ar.name = 'Iron Maiden';",
+      "Give me a list of every Iron Maiden album"
+    ],
+    [
+      "SELECT * FROM albums AS al JOIN tracks AS tr ON tr.album_id = al.id WHERE tr.name = 'Midnight';",
+      "Give me a list of albums that contains a song called \"Midnight\""
+    ],
+    [
+      "SELECT * FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id JOIN tracks AS tr ON tr.album_id = al.id WHERE tr.name = 'Midnight';",
+      "Give me a list of every artist who has performed the song \"Midnight\""
+    ],
+    [
+      "SELECT COUNT(*) FROM albums AS al JOIN artists AS ar ON ar.id = al.artist_id WHERE ar.name = 'Iron Maiden';",
+      "Give me a count of the number of albums by Iron Maiden"
+    ],
+    [
+      "SELECT ar.name, COUNT(*) FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id GROUP BY ar.id ORDER BY ar.name",
+      "List all artists and the number of albums they each have"
+    ],
+    [
+      "SELECT a.title, COUNT(*) FROM albums AS a JOIN tracks AS t ON (t.album_id = a.id) GROUP BY a.id ORDER BY a.title",
+      "List all albums next to the number of tracks they each have"
+    ],
+    [
+      "SELECT ar.*, COUNT(*) AS count FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id GROUP BY ar.id ORDER BY count DESC LIMIT 1;",
+      "Find the artist with the most albums"
+    ],
+    [
+      "SELECT al.*, COUNT(*) AS count FROM tracks AS tr JOIN albums AS al ON tr.album_id = al.id GROUP BY al.id ORDER BY count DESC LIMIT 1;",
+      "Find the album with the most tracks"
+    ],
+    [
+      "SELECT cs.first_name, cs.last_name, SUM(inv.total) AS sum FROM customers AS cs JOIN invoices AS inv ON cs.id = inv.customer_id GROUP BY cs.id ORDER BY sum DESC LIMIT 5;",
+      "List the names of the top five customers based on the sums of their invoice totals"
+    ],
+    [
+      "SELECT * FROM artists ORDER BY name ASC;",
+      "Give me a list of all artists sorted alphabetically by first name"
+    ],
+    [
+      "SELECT al.*, COUNT(*) count FROM albums al JOIN tracks t ON (t.album_id = al.id) GROUP BY al.id ORDER BY count DESC",
+      "List all albums next to the number of tracks they each have in descending order"
+    ],
+    [
+      "SELECT ar.*, COUNT(*) AS count FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id GROUP BY ar.id ORDER BY count DESC, ar.name;",
+      "List all artists and the number of albums they each have in descending order and then by artist name in ascending order"
+    ]
+  ]
+}

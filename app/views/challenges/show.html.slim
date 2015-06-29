@@ -1,0 +1,14 @@
+.messages
+  = flash[:notice]
+  = flash[:alert]
+
+.container
+  .challenge
+    .instructions
+      = @challenge.instructions
+
+    .attempt-form
+      = form_tag("/attempts") do |t|
+        = hidden_field_tag("attempt[challenge_id]", @challenge.id)
+        = text_area_tag("attempt[query]")
+        = submit_tag("Run")
