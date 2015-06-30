@@ -1,0 +1,8 @@
+table
+  tr.headers
+    - results[:fields].each do |field_name|
+      th =field_name
+  - results[:rows].each do |row_data|
+    tr
+      - row_data.each do |k, v|
+        td =v

@@ -8,6 +8,8 @@ gem 'slim-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'factory_girl'
+  gem 'database_cleaner'
   gem 'byebug'
   gem 'powder'
   gem 'pry-byebug'

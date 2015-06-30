@@ -1,11 +1,12 @@
 class ChallengesController < ApplicationController
 
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.order(:order)
   end
 
   def show
-    @challenge = Challenge.find_by(id: params[:id])
+    @last_query = Attempt.results_for(flash[:query]) if flash[:query]
+    @challenge  = Challenge.find_by(id: params[:id])
   end
 
 end

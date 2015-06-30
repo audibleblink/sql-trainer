@@ -2,9 +2,11 @@ class AttemptsController < ApplicationController
 
   def create
     challenge = Challenge.find_by(id: attempt_params[:challenge_id])
-    attempt = Attempt.new(attempt_params.merge({challenge: challenge}))
+    valid_attempt = Attempt.is_correct?(attempt_params[:query], challenge.query)
 
-    if attempt.is_correct?
+    flash[:query] = attempt_params[:query]
+
+    if valid_attempt
       flash[:notice] = "Correct!"
       redirect_to challenge.next
     else

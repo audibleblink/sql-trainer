@@ -3,6 +3,7 @@
   = flash[:alert]
 
 .container
+
   .challenge
     .instructions
       = @challenge.instructions
@@ -10,5 +11,15 @@
     .attempt-form
       = form_tag("/attempts") do |t|
         = hidden_field_tag("attempt[challenge_id]", @challenge.id)
-        = text_area_tag("attempt[query]")
+        = text_area_tag("attempt[query]", flash[:query], autofocus: true)
         = submit_tag("Run")
+
+    .query-results
+      .query
+        = flash[:query]
+
+      .results
+        - if @last_query && @last_query.key?(:fields)
+          = render partial: "shared/query_results", locals: {results: @last_query}
+        - elsif @last_query && @last_query.key?(:error)
+          = @last_query[:error]

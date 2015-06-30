@@ -1,3 +1,2 @@
 .challenge-item
-  a href="/challenges/#{challenge.id}"
-    = challenge.instructions
+  = link_to challenge.instructions, challenge_path(challenge)
