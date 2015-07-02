@@ -18,3 +18,5 @@
 
 .env.development
 .env.test
+auto-highlight-query-text.js
+

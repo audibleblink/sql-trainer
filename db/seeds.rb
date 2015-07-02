@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'json'
+
+path = File.expand_path("../challenge_seeds.json", __FILE__)
+data = JSON.parse(File.read(path))
+
+def create_challenges(data)
+  data["values"].each do |values|
+    params = Hash[data["fields"].zip(values)]
+    Challenge.create!(params)
+  end
+end
+
+create_challenges(data)
