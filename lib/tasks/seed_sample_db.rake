@@ -8,7 +8,7 @@ namespace :db do
       db_path = File.expand_path('../../../db/seeds.sql', __FILE__)
 
       `psql #{db_name} < #{db_path}`
-      Rake::Task['db:schema:dump'].invoke
+      
     end
   end
 end

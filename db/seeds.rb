@@ -10,4 +10,9 @@ def create_challenges(data)
   end
 end
 
+
+# seed the challenge questions
 create_challenges(data)
+
+# seed tables that students run queries on
+Rake::Task['db:sample:seed'].invoke

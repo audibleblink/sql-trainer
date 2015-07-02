@@ -1,7 +1,8 @@
 class ChallengesController < ApplicationController
 
   def index
-    @challenges = Challenge.order(:order)
+    @challenges = Challenge.all
+    @progress = session.fetch(:challenge_id, 0)
   end
 
   def show
