@@ -30,4 +30,5 @@ describe Attempt do
     end
 
   end
+
 end

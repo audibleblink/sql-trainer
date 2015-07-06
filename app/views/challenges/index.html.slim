@@ -7,7 +7,7 @@ h1 All Challenges
       = "#{@progress} / #{@challenges.count}"
     .progress-functions
       .continue
-        = link_to "Continue", challenge_path(id: @progress+1)
+        = link_to "Continue", @next_challenge
       .reset
         = link_to "Reset Progress", reset_path
 

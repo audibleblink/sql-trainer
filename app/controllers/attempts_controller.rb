@@ -9,7 +9,7 @@ class AttemptsController < ApplicationController
     if valid_attempt
       flash[:notice] = "Correct!"
       session[:challenge_id] = challenge.id
-      redirect_to challenge.next
+      redirect_to challenge.next ? challenge.next : root_path
     else
       flash[:alert] = "Incorrect"
       redirect_to challenge
