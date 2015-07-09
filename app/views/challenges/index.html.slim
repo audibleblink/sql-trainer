@@ -1,5 +1,15 @@
 h1 All Challenges
 
 .container
+
+  .progress
+    .progress-indicator
+      = "#{@progress} / #{@challenges.count}"
+    .progress-functions
+      .continue
+        = link_to "Continue", @next_challenge
+      .reset
+        = link_to "Reset Progress", reset_path
+
   ul.challenges
     = render @challenges

@@ -14,12 +14,18 @@
         = text_area_tag("attempt[query]", flash[:query], autofocus: true)
         = submit_tag("Run")
 
+    .metadata
+      = render "schema", tables: @metadata
+
     .query-results
       .query
         = flash[:query]
 
       .results
-        - if @last_query && @last_query.key?(:fields)
-          = render partial: "shared/query_results", locals: {results: @last_query}
-        - elsif @last_query && @last_query.key?(:error)
-          = @last_query[:error]
+        .actual
+          - if @last_query && @last_query.key?(:fields)
+            = render "shared/query_results", results: @last_query
+          - elsif @last_query && @last_query.key?(:error)
+            = @last_query[:error]
+        .expected
+          = render "shared/query_results", results: @expected if @expected

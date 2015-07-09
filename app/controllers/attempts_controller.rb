@@ -8,12 +8,18 @@ class AttemptsController < ApplicationController
 
     if valid_attempt
       flash[:notice] = "Correct!"
-      redirect_to challenge.next
+      session[:challenge_id] = challenge.id
+      redirect_to challenge.next ? challenge.next : root_path
     else
       flash[:alert] = "Incorrect"
       redirect_to challenge
     end
 
+  end
+
+  def reset
+    session.clear
+    redirect_to root_path
   end
 
   private

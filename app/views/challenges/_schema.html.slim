@@ -1,0 +1,8 @@
+- tables.each do |table|
+  table
+    th
+      = table[:table_name]
+    - table[:fields].each do |field|
+      tr
+        td
+          =field
