@@ -1,6 +1,6 @@
 class Challenge < ActiveRecord::Base
   default_scope { order(:order) }
-  store :metadata, accessors: ["tables"]
+  store_accessor :metadata, :tables
 
   def next
     self.class.find_by(order: order + 1)
