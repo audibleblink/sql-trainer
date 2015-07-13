@@ -8,13 +8,12 @@ describe ChallengesController do
     let(:progress) { 0 }
 
     before do
-      stub_last_challenge challenge
+      stub_next_challenge challenge
     end
 
     it "displays the challenges in order" do
       expect(Challenge).to receive(:all) { challenges }
       expect(session).to receive(:fetch).with(:challenge_id) { progress }
-      expect(challenge).to receive(:next) { challenge }
       get :index
       expect(assigns(:challenges)).to eq challenges
       expect(assigns(:progress)).to eq progress

@@ -1,15 +1,25 @@
-h1 All Challenges
 
 .container
+  .header.h1.mt2.mb2
+    | SQL Tutor
 
-  .progress
-    .progress-indicator
-      = "#{@progress} / #{@challenges.count}"
-    .progress-functions
-      .continue
-        = link_to "Continue", @next_challenge
-      .reset
-        = link_to "Reset Progress", reset_path
 
-  ul.challenges
+  ul.challenges.md-col.md-col-7.truncate
+    .h3.mb2
+      | Challenge List
     = render @challenges
+
+  .progress.md-col.md-col-3
+    .progress-indicator.mb2
+      - progress_value = @progress.to_f / @challenges.count.to_f
+      progress.progress.muted value="#{progress_value}" = progress_value
+      .progress-text.center
+        = "#{@progress} of #{@challenges.count} challenges completed"
+
+    .progress-functions.md-col.md-col-12
+      .continue.md-col.md-col-12.center
+        - link_text = @progress == 0 ? "Start" : "Continue"
+        = link_to "#{link_text}", @next_challenge, class: "btn btn-primary mb2 .md-col md-col-8 center"
+
+      .reset.md-col.md-col-12.center
+        = link_to "Reset Progress", reset_path, class: "btn btn-primary bg-red mb2 .md-col md-col-8 center"

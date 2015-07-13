@@ -1,8 +1,8 @@
 - tables.each do |table|
-  table
-    th
+  table.border.rounded.mb2.h5
+    th.blue.border-bottom.bg-silver
       = table[:table_name]
     - table[:fields].each do |field|
       tr
-        td
+        td.border-bottom
           =field

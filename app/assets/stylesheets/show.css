@@ -1,0 +1,23 @@
+#attempt_query {
+  height: 8em;
+}
+
+.sql-textarea {
+  resize: none;
+  font-family: 'Source Code Pro', Consolas, monospace;
+}
+
+.query-results-table {
+  max-height: 400px;
+  min-height: 400px;
+}
+
+.metadata {
+  overflow: scroll;
+  max-height: 250px;
+  min-height: 250px;
+}
+
+progress.progress {
+  color: teal
+}
