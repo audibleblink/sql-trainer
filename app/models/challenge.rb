@@ -7,7 +7,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def previous
-    self.class.find_by(order: order - 1)
+    self.class.find_by(order: order - 1) || Challenge.first
   end
 
   def schema
