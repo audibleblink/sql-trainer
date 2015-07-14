@@ -1,9 +1,26 @@
-$(function(){
-  autoHighlightQueryText.init()
-})
-
+<<<<<<< HEAD
+ST.autoHighlightQueryText = {
+=======
 var autoHighlightQueryText = {
+>>>>>>> b6a0ba6... add codemirror editor
   init: function(){
-    $('#attempt_query').select()
+    var textarea = document.getElementById("attempt_query")
+      , options  = {
+        lineNumbers: true,
+        mode: "text/x-sql",
+        theme: "monokai",
+        keyMap: "sublime",
+        autofocus: true,
+        extraKeys: {
+          Tab: false,
+          "Cmd-D": function(){
+            var word = editor.findWordAt(editor.getCursor());
+            editor.setSelection(word.anchor, word.head);
+          }
+        },
+        cursorHeight: 0.8,
+      }
+
+    var editor = CodeMirror.fromTextArea(textarea, options);
   }
 }

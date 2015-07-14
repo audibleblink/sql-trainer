@@ -13,6 +13,8 @@
  *= require basscss.min
  *= require font-awesome.min
  *= require basscss-progress
+ *= require codemirror
+ *= require codemirror/themes/monokai
  *= require_tree .
  *= require_tree .
  *= require_self

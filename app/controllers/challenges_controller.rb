@@ -5,7 +5,6 @@ class ChallengesController < ApplicationController
   def index
     @challenges = Challenge.all
     @progress = session.fetch(:challenge_id) {0}
-    @next_challenge = next_challenge
   end
 
   def show
