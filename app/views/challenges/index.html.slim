@@ -1,25 +1,33 @@
 
 .container
-  .header.h1.mt2.mb2
+  .header.h1.mt2
     | SQL Tutor
+  hr.mb3
 
-
-  ul.challenges.md-col.md-col-7.truncate
-    .h3.mb2
-      | Challenge List
-    = render @challenges
+  ul.challenges.md-col.md-col-7
+    - challenges_by_topic(@challenges).each_pair do |topic, challenges|
+      .panel.border-top.border-left.rounded.mb3.md-col.md-col-11
+        .topic.bg-silver.px1.h3
+          = topic
+        .sub-challenges.p2.bg-white
+          = render challenges
 
   .progress.md-col.md-col-3
     .progress-indicator.mb2
       - progress_value = @progress.to_f / @challenges.count.to_f
       progress.progress.muted value="#{progress_value}" = progress_value
-      .progress-text.center
+      .progress-text.right-align
         = "#{@progress} of #{@challenges.count} challenges completed"
 
     .progress-functions.md-col.md-col-12
-      .continue.md-col.md-col-12.center
-        - link_text = @progress == 0 ? "Start" : "Continue"
+      .continue.md-col.md-col-12.right-align
+        - is_new_user = @progress == 0
+        - link_text = is_new_user ? "Start" : "Continue"
         = link_to "#{link_text}", @next_challenge, class: "btn btn-primary mb2 .md-col md-col-8 center"
 
-      .reset.md-col.md-col-12.center
+    - if is_new_user
+      .reset.md-col.md-col-12.right-align.hide
+    - else
+
+      .reset.md-col.md-col-12.right-align
         = link_to "Reset Progress", reset_path, class: "btn btn-primary bg-red mb2 .md-col md-col-8 center"

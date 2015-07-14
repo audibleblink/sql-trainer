@@ -10,14 +10,14 @@
   hr
   .challenge
     .challenge-left.md-col.md-col-9
-      .instructions.py2
+      .instructions.py2.h2.md-col.md-col-10
         = @challenge.instructions
 
       .attempt.md-col.md-col-10.bg-silver.rounded.p2
         .attempt-form.md-col.md-col-12
           = form_tag("/attempts", class: "md-col md-col-12") do |t|
             = hidden_field_tag("attempt[challenge_id]", @challenge.id)
-            = text_area_tag("attempt[query]", flash[:query], autofocus: true, class: "sql-textarea md-col md-col-12")
+            = text_area_tag("attempt[query]", flash[:query], autofocus: true, class: "sql-textarea md-col md-col-12 border-none")
             .btn.block.clear.p0.mt1
               = submit_tag("Run", class: "btn btn-primary md-col-12 mt2")
         .clear

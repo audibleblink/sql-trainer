@@ -16,8 +16,5 @@
   overflow: scroll;
   max-height: 250px;
   min-height: 250px;
-}
-
-progress.progress {
-  color: teal
+  /*font-family: 'Source Code Pro', Consolas, monospace;*/
 }

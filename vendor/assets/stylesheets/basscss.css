@@ -834,32 +834,3 @@ hr {
 .bg-darken-2 { background-color: rgba(0,0,0,.125) }
 .bg-darken-3 { background-color: rgba(0,0,0,.25) }
 .bg-darken-4 { background-color: rgba(0,0,0,.5) }
-
-progress {
-  display: block;
-  width: 100%;
-  height: calc( var(--form-field-height) / 4 );
-  margin: var(--form-field-padding-y) 0;
-  overflow: hidden;
-  -webkit-appearance: none;
-}
-
-.progress {
-  background-color: var(--darken-2);
-  border: 0;
-  border-radius: 3px;
-}
-
-.progress::-webkit-progress-bar {
-  -webkit-appearance: none;
-  background-color: var(--darken-2)
-}
-
-.progress::-webkit-progress-value {
-  -webkit-appearance: none;
-  background-color: currentColor;
-}
-
-.progress::-moz-progress-bar {
-  background-color: currentColor;
-}
