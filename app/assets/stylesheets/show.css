@@ -1,0 +1,30 @@
+#attempt_query {
+  max-height: 8em;
+  min-height: 8em;
+}
+
+.sql-textarea {
+  resize: none;
+  font-family: 'Source Code Pro', Consolas, monospace;
+}
+
+.query-results-table {
+  max-height: 18em;
+  min-height: 18em;
+}
+
+.metadata {
+  overflow: scroll;
+  max-height: 24em;
+  min-height: 24em;
+  /*font-family: 'Source Code Pro', Consolas, monospace;*/
+}
+
+form > .CodeMirror {
+  font-family: 'Source Code Pro', Consolas, monospace;
+  max-height: 9em;
+  min-height: 9em;
+  line-height: 1.5em;
+  font-size: 120%;
+  border-radius: 3px;
+}

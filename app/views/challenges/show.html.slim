@@ -1,31 +1,45 @@
-.messages
-  = flash[:notice]
-  = flash[:alert]
+.messages.center.white
+  .notice.bg-green
+    = flash[:notice]
+  .alert.bg-red.white
+    = flash[:alert]
 
 .container
-
+  .header.h1.mt2
+    = link_to "SQL Tutor", root_path
+  hr
   .challenge
-    .instructions
-      = @challenge.instructions
+    .challenge-left.md-col.md-col-9
+      .instructions.py2.h2.md-col.md-col-10
+        = @challenge.instructions
 
-    .attempt-form
-      = form_tag("/attempts") do |t|
-        = hidden_field_tag("attempt[challenge_id]", @challenge.id)
-        = text_area_tag("attempt[query]", flash[:query], autofocus: true)
-        = submit_tag("Run")
+      .attempt.md-col.md-col-10.bg-silver.rounded.p2
+        .attempt-form.md-col.md-col-12
+          = render "editor"
 
-    .metadata
-      = render "schema", tables: @metadata
+        .clear
+        .query.md-col.md-col-12
+          .h5.mt2
+             = display_last_query
 
-    .query-results
-      .query
-        = flash[:query]
+    .challenge-right.md-col.md-col-3
+      .h2.mt1 Table Info
+      .metadata.p2.mt1
+        = render "schema", tables: @metadata
 
-      .results
-        .actual
-          - if @last_query && @last_query.key?(:fields)
+    .hr
+    .results.md-col.md-col-12.mb3
+      .actual.md-col.md-col-6
+        - if @last_query && @last_query.key?(:fields)
+          h4 Your Results
+          .query-results-table.overflow-scroll.mr2.border.rounded
             = render "shared/query_results", results: @last_query
-          - elsif @last_query && @last_query.key?(:error)
+        - elsif @last_query && @last_query.key?(:error)
+          h4 Your Results
+          .query-results-table.overflow-scroll.mr1
             = @last_query[:error]
-        .expected
-          = render "shared/query_results", results: @expected if @expected
+      .expected.md-col.md-col-6
+        - if @expected
+          h4 Expected Results
+          .query-results-table.overflow-scroll.mr2.border.rounded
+            = render "shared/query_results", results: @expected

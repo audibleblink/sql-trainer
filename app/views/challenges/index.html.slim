@@ -1,15 +1,29 @@
-h1 All Challenges
 
 .container
+  .header.h1.mt2
+    | SQL Tutor
+  hr.mb3
 
-  .progress
-    .progress-indicator
-      = "#{@progress} / #{@challenges.count}"
-    .progress-functions
-      .continue
-        = link_to "Continue", @next_challenge
-      .reset
-        = link_to "Reset Progress", reset_path
+  ul.challenges.md-col.md-col-7
+    - challenges_by_topic(@challenges).each_pair do |topic, challenges|
+      .panel.border-top.border-left.rounded.mb3.md-col.md-col-11
+        .topic.bg-silver.px1.h3
+          = topic
+        .sub-challenges.p2.bg-white
+          = render challenges
 
-  ul.challenges
-    = render @challenges
+  .progress.md-col.md-col-3
+    .progress-indicator.mb2
+      progress.progress.muted value="#{progress_value}" = progress_value
+      .progress-text.right-align
+        = "#{@progress} of #{@challenges.count} challenges completed"
+
+    .progress-functions.md-col.md-col-12
+      .continue.md-col.md-col-12.right-align
+        = link_to "#{start_button_text}", next_challenge, class: "btn btn-primary mb2 .md-col md-col-8 center"
+
+    - if is_new_user
+      .reset.md-col.md-col-12.right-align.hide
+    - else 
+      .reset.md-col.md-col-12.right-align
+        = link_to "Reset Progress", reset_path, class: "btn btn-primary bg-red mb2 .md-col md-col-8 center"

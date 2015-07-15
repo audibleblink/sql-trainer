@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'slim-rails'
+gem 'codemirror-rails'
 
 group :development, :test do
   gem 'dotenv-rails'

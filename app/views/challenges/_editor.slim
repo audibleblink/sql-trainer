@@ -1,0 +1,8 @@
+= form_tag("/attempts", class: "md-col md-col-12") do |t|
+  = hidden_field_tag("attempt[challenge_id]", @challenge.id)
+  = text_area_tag("attempt[query]", flash[:query], class: "sql-textarea md-col md-col-12 border-none")
+  .btn.block.clear.p0.mt1
+    = submit_tag("Run", class: "btn btn-primary md-col-12 mt2")
+
+  script
+    | ST.autoHighlightQueryText.init()

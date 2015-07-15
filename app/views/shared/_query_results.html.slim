@@ -1,8 +1,8 @@
 table
   tr.headers
     - results[:fields].each do |field_name|
-      th =field_name
+      th.blue.border-top.bg-silver =field_name
   - results[:rows].each do |row_data|
     tr
       - row_data.each do |k, v|
-        td =v
+        td.border-top =v

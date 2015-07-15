@@ -5,7 +5,6 @@ class ChallengesController < ApplicationController
   def index
     @challenges = Challenge.all
     @progress = session.fetch(:challenge_id) {0}
-    @next_challenge = last_challenge.next
   end
 
   def show
@@ -20,8 +19,10 @@ class ChallengesController < ApplicationController
 
   def set_previous_results
     return unless previous_query?
+    last_guess_correct = flash[:notice].present?
+    expected = last_guess_correct ? @challenge.previous.query : @challenge.query
     @last_query = Attempt.results_for(flash[:query])
-    @expected = Attempt.results_for(@challenge.previous.query)
+    @expected = Attempt.results_for(expected)
   end
 
 end

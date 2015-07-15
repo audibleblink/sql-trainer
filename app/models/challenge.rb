@@ -1,13 +1,13 @@
 class Challenge < ActiveRecord::Base
   default_scope { order(:order) }
-  store_accessor :metadata, :tables
+  store_accessor :metadata, :tables, :topic
 
   def next
     self.class.find_by(order: order + 1)
   end
 
   def previous
-    self.class.find_by(order: order - 1)
+    self.class.find_by(order: order - 1) || Challenge.first
   end
 
   def schema
