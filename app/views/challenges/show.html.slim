@@ -19,8 +19,8 @@
 
         .clear
         .query.md-col.md-col-12
-          - if @last_query
-            .h5.mt2 = "Last Query: " + flash[:query]
+          .h5.mt2
+             = display_last_query
 
     .challenge-right.md-col.md-col-3
       .h2.mt1 Table Info

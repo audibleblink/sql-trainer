@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ST.autoHighlightQueryText = {
-=======
-var autoHighlightQueryText = {
->>>>>>> b6a0ba6... add codemirror editor
   init: function(){
     var textarea = document.getElementById("attempt_query")
       , options  = {

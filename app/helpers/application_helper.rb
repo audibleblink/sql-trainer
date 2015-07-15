@@ -23,4 +23,11 @@ module ApplicationHelper
   def next_challenge
     session[:challenge_id] ? last_challenge.next : Challenge.first
   end
+
+  def display_last_query
+    if @last_query
+      "Last Query:  #{flash[:query]}"
+    end
+  end
+
 end

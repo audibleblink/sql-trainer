@@ -7,17 +7,12 @@ describe ChallengesController do
     let(:challenges) { [challenge] }
     let(:progress) { 0 }
 
-    before do
-      stub_next_challenge challenge
-    end
-
     it "displays the challenges in order" do
       expect(Challenge).to receive(:all) { challenges }
       expect(session).to receive(:fetch).with(:challenge_id) { progress }
       get :index
       expect(assigns(:challenges)).to eq challenges
       expect(assigns(:progress)).to eq progress
-      expect(assigns(:next_challenge)).to eq challenge
     end
   end
 
