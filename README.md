@@ -1,7 +1,9 @@
 
 # Sql Tutor
 
-Sql tutor app
+An app designed to allow student to practice and level up their SQL queries. 
+
+![Imgur](http://i.imgur.com/xLP2omw.png)
 
 ### Setup
 
