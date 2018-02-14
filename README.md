@@ -1,7 +1,7 @@
 
 # Sql Tutor
 
-An app designed to allow student to practice and level up their SQL queries. 
+An app designed to allow students to practice and level up their SQL queries. 
 
 ![Imgur](http://i.imgur.com/xLP2omw.png)
 
@@ -43,10 +43,3 @@ Run tests:
 ```
 $ RAILS_ENV=test rake spec
 ```
-
-See the [wiki](https://github.com/devbootcamp-tech/wiki/wiki) for Git and deployment instructions.
-
-
-### Scheduled jobs
-
-No scheduled jobs
